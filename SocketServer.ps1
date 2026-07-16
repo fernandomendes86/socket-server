@@ -37,8 +37,8 @@ try {
             continue
         }
 
-        $cliente = $listener.AcceptTcpClient()
-        $stream = $cliente.GetStream()
+        $client = $listener.AcceptTcpClient()
+        $stream = $client.GetStream()
         $buffer = New-Object byte[] 1024
         $bytes = $stream.Read($buffer, 0, $buffer.Length)
 
@@ -54,7 +54,7 @@ try {
         }
 
         $stream.Close()
-        $cliente.Close()
+        $client.Close()
     }
 }
 catch {
