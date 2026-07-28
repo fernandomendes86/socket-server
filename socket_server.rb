@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require 'socket'
 require 'optparse'
 
@@ -10,25 +12,29 @@ OptionParser.new do |opts|
   opts.on('-r RESPOSTA', '--resposta RESPOSTA', 'Resposta') { |v| opcoes[:resposta] = v }
 end.parse!
 
-ip, porta, resposta = opcoes[:ip], opcoes[:porta], opcoes[:resposta]
+ip = opcoes[:ip]
+porta = opcoes[:porta]
+resposta = opcoes[:resposta]
 
 server = TCPServer.new(ip, porta)
 puts "Servidor em #{ip}:#{porta}"
 puts "Pressione Ctrl+C para parar\n\n"
 
-trap('INT') { puts "\nServidor parado."; exit }
+trap('INT') do
+  puts "\nServidor parado."
+  exit
+end
 
 loop do
   client = server.accept
 
   begin
     recebido = client.recv(1024)
+    return if recebido.empty?
 
-    unless recebido.empty?
-      puts "Recebido: #{recebido}"
-      client.write(resposta)
-      puts "Resposta: #{resposta}\n\n"
-    end
+    puts "Recebido: #{recebido}"
+    client.write(resposta)
+    puts "Resposta: #{resposta}\n\n"
   rescue IOError, Errno::ECONNRESET => e
     puts "Erro na conexão: #{e.message}"
   ensure
