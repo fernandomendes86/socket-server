@@ -1,6 +1,6 @@
 # socket-server
 
-Este documento reúne exemplos de uso do servidor TCP nas duas versões disponíveis: **Ruby** (`socket-server.rb`) e **PowerShell** (`SocketServer.ps1`).
+Este documento reúne exemplos de uso do servidor TCP nas duas versões disponíveis: **Ruby** (`socket_server.rb`) e **PowerShell** (`SocketServer.ps1`).
 
 ## Índice
 
@@ -17,7 +17,7 @@ Este documento reúne exemplos de uso do servidor TCP nas duas versões disponí
 
 ## Ruby
 
-> Execução: `ruby socket-server.rb [opções]`
+> Execução: `ruby socket_server.rb [opções]`
 
 | Flag curta | Flag longa      | Descrição      | Padrão             |
 |------------|-----------------|-----------------|---------------------|
@@ -28,7 +28,7 @@ Este documento reúne exemplos de uso do servidor TCP nas duas versões disponí
 ### Exemplo 1 — Valores padrão
 
 ```bash
-ruby socket-server.rb
+ruby socket_server.rb
 ```
 
 Sobe o servidor em `0.0.0.0:5000` com a resposta padrão `0000FBIPI9999922`.
@@ -36,7 +36,7 @@ Sobe o servidor em `0.0.0.0:5000` com a resposta padrão `0000FBIPI9999922`.
 ### Exemplo 2 — IP, porta e resposta customizados
 
 ```bash
-ruby socket-server.rb -i 127.0.0.1 -p 6000 -r "MINHA_RESPOSTA"
+ruby socket_server.rb -i 127.0.0.1 -p 6000 -r "MINHA_RESPOSTA"
 ```
 
 Sobe o servidor em `127.0.0.1:6000`, respondendo com `MINHA_RESPOSTA` a qualquer cliente conectado.
@@ -44,7 +44,7 @@ Sobe o servidor em `127.0.0.1:6000`, respondendo com `MINHA_RESPOSTA` a qualquer
 ### Exemplo 3 — Flags no formato longo
 
 ```bash
-ruby socket-server.rb --ip 0.0.0.0 --porta 5000 --resposta "0000FBIPI9999922"
+ruby socket_server.rb --ip 0.0.0.0 --porta 5000 --resposta "0000FBIPI9999922"
 ```
 
 Equivalente ao Exemplo 1, mas usando a forma longa das opções.
