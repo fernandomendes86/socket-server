@@ -49,8 +49,7 @@ try {
 
             $dados = [System.Text.Encoding]::ASCII.GetBytes($Resposta)
             $stream.Write($dados, 0, $dados.Length)
-            
-            Write-Host "Resposta: $Resposta"
+            Write-Host "Resposta: $Resposta`n"
         }
 
         $stream.Close()
