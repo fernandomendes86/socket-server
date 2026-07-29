@@ -30,7 +30,7 @@ loop do
 
   begin
     recebido = client.recv(1024)
-    return if recebido.empty?
+    return if recebido.strip.empty?
 
     puts "Recebido: #{recebido}"
     client.write(resposta)
